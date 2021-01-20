@@ -19,7 +19,12 @@ Module ControlFlow
             Console.WriteLine("The Numbers Are Equal!!")
         End If
 
+        Dim userInput As String
+        Console.WriteLine("Type a word and press enter")
+        userInput = Console.ReadLine
 
+        'Console.WriteLine("You typed " & userInput)
+        Console.WriteLine($"You typed {userInput}")
 
 
 
