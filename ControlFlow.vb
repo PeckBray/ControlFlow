@@ -32,37 +32,46 @@ Module ControlFlow
         Dim firstNumber As Integer
         Dim secondNumber As Integer
         Dim userInput As String
-        Dim problem As Boolean
+        Dim problem As Boolean = True
 
-        Console.WriteLine("Please enter a number")
+        Console.WriteLine("Enter ""Q"" any time to quit")
+        While problem = True And userInput <> "Q" 'And userInput <> "q"
+            Console.WriteLine("Please enter the first number")
+            Try
+                userInput = (Console.ReadLine())
+                firstNumber = CInt(userInput)
+                problem = False
+            Catch e As Exception
+                Console.WriteLine($"I need a number. You entered {userInput}")
+                problem = True
+            End Try
+        End While
 
-        Try
-            userInput = (Console.ReadLine())
-            firstNumber = CInt(userInput)
-        Catch e As Exception
-            Console.WriteLine($"I need a number. You entered {userInput}")
-            problem = True
-        End Try
+        problem = True
 
-        Console.WriteLine("Please enter a number")
-
-        Try
-            userInput = (Console.ReadLine())
-            secondNumber = CInt(userInput)
-        Catch e As Exception
-            Console.WriteLine($"I need a number. You entered {userInput}")
-            problem = True
-        End Try
-
+        While problem = True And userInput <> "Q"
+            Console.WriteLine("Please enter the second number")
+            Try
+                userInput = (Console.ReadLine())
+                secondNumber = CInt(userInput)
+                problem = False
+            Catch e As Exception
+                Console.WriteLine($"I need a number. You entered {userInput}")
+                problem = True
+            End Try
+        End While
         Console.Clear()
 
-        If problem = True Then
+        If userInput = "Q" Then
+
+        ElseIf problem = True Then
             Console.WriteLine("Could not perform addition. Please enter numbers")
+            Console.Read()
         Else
             'Console.WriteLine(CInt(firstNumber) + CInt(secondNumber))
             Console.WriteLine($"{firstNumber} + {secondNumber} = {firstNumber + secondNumber}")
+            Console.Read()
         End If
-        Console.Read()
     End Sub
 
 End Module
